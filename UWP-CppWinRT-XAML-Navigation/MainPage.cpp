@@ -22,23 +22,28 @@ namespace winrt::UWP_CppWinRT_XAML_Navigation::implementation
         throw hresult_not_implemented();
     }
 
-    void MainPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
+    void MainPage::ClickHandler(IInspectable const& sender, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
+		sender.as<winrt::Windows::UI::Xaml::Controls::Button>().Content(box_value(L"Clicked"));
+        //myButton().Content(box_value(L"Clicked"));
     }
 }
 
 
 void winrt::UWP_CppWinRT_XAML_Navigation::implementation::MainPage::NavViewSelectionChanged(winrt::Windows::UI::Xaml::Controls::NavigationView const& sender, winrt::Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args)
 {
-	winrt::Windows::UI::Xaml::Controls::NavigationViewItem item = args.SelectedItem;
+	winrt::hstring const itemName = args.as<winrt::Windows::UI::Xaml::Controls::NavigationViewItem>().Name();
 
-	if (item.Tag == "second page")
+	winrt::hstring const scndPage = winrt::hstring(L"Second Page");
+	winrt::hstring const thrdPage = winrt::hstring(L"Third Page");
+
+	
+	if (winrt::operator ==(itemName,scndPage))
 	{
-		this->MainFrame.Navigate(SecondPage);
+		Frame().Navigate(winrt::xaml_typename<UWP_CppWinRT_XAML_Navigation::SecondPage>());
 	}
-	else if (item.Tag = "third page")
+	else if (winrt::operator ==(itemName, thrdPage))
 	{
-		this->MainFrame.Navigate(ThirdPage);
+		Frame().Navigate(winrt::xaml_typename<UWP_CppWinRT_XAML_Navigation::ThirdPage>());
 	}
 }

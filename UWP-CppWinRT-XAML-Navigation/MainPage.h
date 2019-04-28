@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿// https://channel9.msdn.com/events/Windows/Windows-Developer-Day-Fall-Creators-Update/WinDev010?term=uwp%20navigation&lang-en=true
+
+#pragma once
 
 #include "MainPage.g.h"
 
