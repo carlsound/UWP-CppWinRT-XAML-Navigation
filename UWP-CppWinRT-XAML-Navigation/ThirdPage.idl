@@ -1,0 +1,9 @@
+namespace UWP_CppWinRT_XAML_Navigation
+{
+    [default_interface]
+    runtimeclass ThirdPage : Windows.UI.Xaml.Controls.Page
+    {
+        ThirdPage();
+        Int32 MyProperty;
+    }
+}

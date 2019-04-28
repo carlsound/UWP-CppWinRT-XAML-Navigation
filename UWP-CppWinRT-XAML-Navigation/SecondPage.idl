@@ -1,0 +1,9 @@
+namespace UWP_CppWinRT_XAML_Navigation
+{
+    [default_interface]
+    runtimeclass SecondPage : Windows.UI.Xaml.Controls.Page
+    {
+        SecondPage();
+        Int32 MyProperty;
+    }
+}
